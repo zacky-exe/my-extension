@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "AiSentry: Fake User Detection in S-Commerce Chrome Extension",
+    "version": "1.0",
+    "description": "Detects and manages fake user comments in social e-commerce.",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "contextMenus",
+        "webNavigation",
+        "tabs",
+        "commands"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "commands": {
+        "scan_selected_comment": {
+            "suggested_key": {
+                "default": "Alt+S"
+            },
+            "description": "Scan the selected comment"
+        }
+    }
+}
+
